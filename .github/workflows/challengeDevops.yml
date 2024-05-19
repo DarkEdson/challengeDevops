@@ -1,14 +1,39 @@
+name: Deploy to AWS ECS
+
 on:
   push:
-    branches: 
+    branches:
       - master
+      - develop
+      - staging
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Set env
-      run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Extract branch name
+      id: extract_branch
+      run:  echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+    - name: Set environment variable
+      run: node set-env.js
+      env:
+        BRANCH_NAME: ${{ env.BRANCH_NAME }}
+        
+    - name: Build Angular project
+      run: npm run build -- --configuration production
+      
     - name: Print branch name
       run: echo "Deploying branch $BRANCH_NAME"
