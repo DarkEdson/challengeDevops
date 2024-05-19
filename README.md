@@ -17,6 +17,16 @@ Este proyecto es una aplicación web desarrollada con Angular 17 y desplegada en
 - Repositorio de GitHub.
 - Node.js v18 y Angular CLI instalados en la máquina local para desarrollo.
 
+## Configurar Secrets en GitHub
+
+En el repositorio de GitHub, agrega los siguientes secretos:
+
+- `AWS_ACCESS_KEY_ID`: ID de la clave de acceso de AWS.
+- `AWS_SECRET_ACCESS_KEY`: Clave secreta de acceso de AWS.
+- `AWS_REGION`: Región de AWS (por ejemplo, us-east-1).
+- `ECR_REGISTRY`: URI del registro de Amazon ECR.
+- `ECR_REPOSITORY`: Nombre del repositorio de Amazon ECR.
+
 ## Explicación de los Pasos
 
 1. **Checkout**: Se realiza el checkout del código del repositorio.
