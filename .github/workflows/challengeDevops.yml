@@ -12,10 +12,10 @@ env:
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   IMAGE_URL: ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_REPOSITORY}}:${{github.sha}}
-  ECS_SERVICE: my-ecs-service
-  ECS_CLUSTER: challenges
+  ECS_SERVICE: devops-service
+  ECS_CLUSTER: devops
   ECS_TASK_DEFINITION: ecs-task-def.json
-  CONTAINER_NAME: test-container
+  CONTAINER_NAME: devops-container
 
 jobs:
   deploy:
@@ -74,7 +74,7 @@ jobs:
       - name: Deploy to Amazon ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          task-definition: ecs-task-def.json
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
