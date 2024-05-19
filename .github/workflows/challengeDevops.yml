@@ -33,7 +33,7 @@ jobs:
         BRANCH_NAME: ${{ env.BRANCH_NAME }}
 
     - name: Build Angular project
-      run: ng build
+      run: npm run build -- --configuration production
 
     - name: Print branch name
       run: echo "Deploying branch $BRANCH_NAME"
