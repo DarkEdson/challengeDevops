@@ -15,7 +15,7 @@ env:
   ECS_SERVICE: my-ecs-service
   ECS_CLUSTER: challenges
   ECS_TASK_DEFINITION: ecs-task-def.json
-  CONTAINER_NAME: my-container
+  CONTAINER_NAME: test-container
 
 jobs:
   deploy:
