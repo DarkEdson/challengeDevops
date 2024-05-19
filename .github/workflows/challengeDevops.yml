@@ -12,7 +12,7 @@ env:
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   IMAGE_URL: ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_REPOSITORY}}:${{github.sha}}
-  ECS_SERVICE: devops-service
+  ECS_SERVICE: devops-services
   ECS_CLUSTER: devops
   ECS_TASK_DEFINITION: ecs-task-def.json
   CONTAINER_NAME: devops-container
