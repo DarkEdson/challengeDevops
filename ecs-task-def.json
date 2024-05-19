@@ -1,6 +1,7 @@
 {
   "family": "nombre-de-tu-tarea",
   "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::295192382517:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "name": "devops-container",
