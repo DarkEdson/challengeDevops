@@ -1,5 +1,5 @@
 FROM nginx:alpine
-COPY dist/challengeDevops /usr/share/nginx/html
+COPY dist/challenge-devops/browser/ /usr/share/nginx/html/
+COPY dist/challenge-devops/server/ /usr/share/nginx/server/
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
