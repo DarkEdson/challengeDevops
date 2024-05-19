@@ -61,13 +61,6 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-      - name: Debug secrets
-        run: |
-          echo "ECR_REGISTRY is ${{ secrets.ECR_REGISTRY }}"
-          echo "ECR_REPOSITORY is ${{ secrets.ECR_REPOSITORY }}"
-          echo "GitHub SHA is ${{ github.sha }}"
-          echo "IMAGE_URL is ${{ env.IMAGE_URL }}"
-
       - name: Replace IMAGE_URL in ECS task definition
         run: sed -i "s|\${IMAGE_URL}|${{ env.IMAGE_URL }}|g" ecs-task-def.json
 
