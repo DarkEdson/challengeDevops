@@ -68,6 +68,9 @@ jobs:
           echo "GitHub SHA is ${{ github.sha }}"
           echo "IMAGE_URL is ${{ env.IMAGE_URL }}"
 
+      - name: Replace IMAGE_URL in ECS task definition
+        run: sed -i "s|\${IMAGE_URL}|${{ env.IMAGE_URL }}|g" ecs-task-def.json
+
       - name: Deploy to Amazon ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
